@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="ms">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Peta SMKAHMY Muar</title>
+
+<link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css"/>
+
+<style>
+*{
+  margin:0;
+  padding:0;
+  box-sizing:border-box;
+}
+
+body{
+  font-family:Arial,sans-serif;
+  background:linear-gradient(135deg,#ff7b00,#ffb347);
+  min-height:100vh;
+  text-align:center;
+  color:white;
+}
+
+header{
+  padding:20px;
+  font-size:32px;
+  font-weight:bold;
+}
+
+#map{
+  height:75vh;
+  width:92%;
+  margin:auto;
+  border-radius:20px;
+  border:4px solid white;
+  box-shadow:0 10px 25px rgba(0,0,0,0.3);
+}
+
+.buttons{
+  margin:20px;
+}
+
+button{
+  background:#0066ff;
+  color:white;
+  border:none;
+  padding:14px 24px;
+  margin:10px;
+  border-radius:12px;
+  font-size:17px;
+  cursor:pointer;
+  transition:0.3s;
+}
+
+button:hover{
+  background:#0044aa;
+  transform:scale(1.05);
+}
+</style>
+</head>
+<body>
+
+<header>🗺️ PETA SMKAHMY MUAR JOHOR</header>
+
+<div id="map"></div>
+
+<div class="buttons">
+  <button onclick="map.zoomIn()">➕ Zoom In</button>
+  <button onclick="map.zoomOut()">➖ Zoom Out</button>
+</div>
+
+<script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
+
+<script>
+// Lokasi Muar Johor
+var map = L.map('map').setView([2.0442, 102.5689], 13);
+
+// OpenStreetMap
+L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png',{
+  attribution:'© OpenStreetMap'
+}).addTo(map);
+
+// Marker sekolah
+L.marker([2.0442, 102.5689])
+.addTo(map)
+.bindPopup("<b>SMKAHMY</b><br>Muar, Johor")
+.openPopup();
+</script>
+
+</body>
+</html>
